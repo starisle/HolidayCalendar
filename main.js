@@ -20,7 +20,6 @@ async function GetHoliday() {
 
             Object.entries(item).forEach(child => {
                 const [key, value] = child;
-                node.push('STATUS:CONFIRMED');
                 node.push(`${key}:${value}`);
             });
 
