@@ -4,7 +4,6 @@ const path = require('path');
 
 const _path = path.join(__dirname, 'generate');
 const _filename = path.join(_path, 'Cal.ics');
-const _sequence = 0;
 
 async function GetHoliday() {
     const node = [];
@@ -20,7 +19,6 @@ async function GetHoliday() {
             node.push(`UID:${item['DTSTART;VALUE=DATE']}_IU2099`);
             node.push(`CREATED:${item['DTSTART;VALUE=DATE']}`);
             node.push(`DTSTAMP:${item['DTSTART;VALUE=DATE']}`);
-            node.push(`SEQUENCE:${_sequence}`);
             Object.entries(item).forEach(child => {
                 const [key, value] = child;
                 node.push(`${key}:${value}`);
