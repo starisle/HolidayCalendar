@@ -17,7 +17,9 @@ async function GetHoliday() {
 
         json.forEach(item => {
             node.push('BEGIN:VEVENT');
+            node.push(`UID:${item['DTSTART;VALUE=DATE']}T000001_IU2099`);
             node.push(`CREATED:${item['DTSTART;VALUE=DATE']}T000001`);
+            node.push(`DTSTAMP:${item['DTSTART;VALUE=DATE']}T000001`);
 
             Object.entries(item).forEach(child => {
                 const [key, value] = child;
