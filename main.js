@@ -21,10 +21,10 @@ async function GetHoliday() {
                 const [key, value] = child;
                 node.push(`${key}:${value}`);
             });
+            node.push(`UID:${item['DTSTART;VALUE=DATE']}T000001_IU2099`);
             node.push(`CREATED:${item['DTSTART;VALUE=DATE']}T000001`);
             node.push(`DTSTAMP:${item['DTSTART;VALUE=DATE']}T000001`);
-            node.push(`UID:${item['DTSTART;VALUE=DATE']}T000001_IU2099`);
-            node.push(`SEQUENCE:${_sequence}`);
+            // node.push(`SEQUENCE:${_sequence}`);
             node.push('END:VEVENT');
         });
     }
