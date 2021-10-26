@@ -20,11 +20,11 @@ async function GetHoliday() {
             node.push(`UID:${item['DTSTART;VALUE=DATE']}_IU2099`);
             node.push(`CREATED:${item['DTSTART;VALUE=DATE']}`);
             node.push(`DTSTAMP:${item['DTSTART;VALUE=DATE']}`);
+            node.push(`SEQUENCE:${_sequence}`);
             Object.entries(item).forEach(child => {
                 const [key, value] = child;
                 node.push(`${key}:${value}`);
             });
-            node.push(`SEQUENCE:${_sequence}`);
             node.push('END:VEVENT');
         });
     }
