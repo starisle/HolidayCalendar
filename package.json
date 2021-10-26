@@ -1,0 +1,16 @@
+{
+  "name": "HolidayCalendar",
+  "version": "1.0.0",
+  "description": "Holiday Calendar Subscribe",
+  "main": "main.js",
+  "repository": "git@github.com:IU2099/HolidayCalendar.git",
+  "author": "jc",
+  "license": "MIT",
+  "scripts": {
+    "build": "node main.js"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "glob": "^7.2.0"
+  }
+}
