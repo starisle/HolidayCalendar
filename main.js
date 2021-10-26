@@ -22,8 +22,9 @@ async function GetHoliday() {
                 const [key, value] = child;
                 node.push(`${key}:${value}`);
             });
-
-            node.push('SEQUENCE:0');
+            node.push(`DTSTAMP:${item['DTSTART;VALUE=DATE']}T000001`);
+            node.push(`CREATED:${item['DTSTART;VALUE=DATE']}T000001`);
+            node.push(`SEQUENCE:${_sequence}`);
             node.push('END:VEVENT');
         });
     }
@@ -32,9 +33,11 @@ async function GetHoliday() {
 async function Main() {
     let table = [
         'BEGIN:VCALENDAR',
+        'PRODID: -//China Public Holidays 1.0//CN',
         'VERSION:2.0',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
+        'CLASS:PUBLIC',
         'X-WR-CALNAME:法定节假日',
         'X-WR-TIMEZONE:Asia/Shanghai',
         'X-WR-CALDESC:中国放假、调休和补班日历',
@@ -49,7 +52,6 @@ async function Main() {
         'END: STANDARD',
         'END: VTIMEZONE',
     ];
-
 
     const nodes = await GetHoliday();
     table = table.concat(nodes);

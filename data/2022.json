@@ -267,6 +267,7 @@
   }, {
     "DTSTART;VALUE=DATE": "20221007",
     "DTEND;VALUE=DATE": "20221007",
+    "DTSTAMP": "20221007T000001",
     "SUMMARY": "💜 国庆节 假期 第7天/共7天 💜",
     "DESCRIPTION": "国庆节：10月1日至7日放假调休，共7天。10月8日（星期六）、10月9日（星期日）上班。",
     "STATUS": "CONFIRMED",
