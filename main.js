@@ -3,7 +3,7 @@ const glob = require('glob');
 const path = require('path');
 
 const _path = path.join(__dirname, 'generate');
-const _filename = path.join(_path, 'holidays.ics');
+const _filename = path.join(_path, 'Holidays.ics');
 const _sequence = 0;
 
 async function GetHoliday() {
@@ -11,7 +11,7 @@ async function GetHoliday() {
     const scanPattern = 'data/**.json';
     const files = glob.sync(scanPattern);
 
-    for (let i = 0; i < files.length; i++) {
+    for (let i = 0, len = files.length; i < len; i++) {
         const filePath = path.join(__dirname, files[i]);
         const json = await fse.readJson(filePath);
 
@@ -23,18 +23,25 @@ async function GetHoliday() {
                 node.push(`${key}:${value}`);
             });
 
-            node.push(`SEQUENCE:${_sequence}`);
+            node.push('SEQUENCE:0');
             node.push('END:VEVENT');
         });
     }
     return node;
 }
 async function Main() {
-    let table = ['BEGIN:VCALENDAR'];
-    table.push('VERSION:1.0');
-    table.push('X-WR-CALNAME:法定节假日');
-    table.push('X-WR-CALDESC:');
-    table.push('X-APPLE-CALENDAR-COLOR:#9fa0d7FF');
+    let table = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'X-WR-CALNAME:法定节假日',
+        'X-WR-CALDESC:',
+        'X-APPLE-CALENDAR-COLOR:#65db39FF'
+    ];
+    // table.push();
+    // table.push();
+    // table.push();
+    // // table.push('X-APPLE-CALENDAR-COLOR:#9fa0d7FF');
+    // table.push();
 
     const nodes = await GetHoliday();
     table = table.concat(nodes);
