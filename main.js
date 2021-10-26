@@ -20,6 +20,7 @@ async function GetHoliday() {
 
             Object.entries(item).forEach(child => {
                 const [key, value] = child;
+                node.push('STATUS:CONFIRMED');
                 node.push(`${key}:${value}`);
             });
 
@@ -33,15 +34,23 @@ async function Main() {
     let table = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
         'X-WR-CALNAME:法定节假日',
-        'X-WR-CALDESC:',
-        'X-APPLE-CALENDAR-COLOR:#65db39FF'
+        'X-WR-TIMEZONE:Asia/Shanghai',
+        'X-WR-CALDESC:中国放假、调休和补班日历',
+        'BEGIN:VTIMEZONE',
+        'TZID:Asia/Shanghai',
+        'X-LIC-LOCATION:Asia/Shanghai',
+        'BEGIN:STANDARD',
+        'TZOFFSETFROM: +0800',
+        'TZOFFSETTO: +0800',
+        'TZNAME: CST',
+        'DTSTART: 19700101T000000',
+        'END: STANDARD',
+        'END: VTIMEZONE',
     ];
-    // table.push();
-    // table.push();
-    // table.push();
-    // // table.push('X-APPLE-CALENDAR-COLOR:#9fa0d7FF');
-    // table.push();
+
 
     const nodes = await GetHoliday();
     table = table.concat(nodes);
