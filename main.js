@@ -3,7 +3,7 @@ const glob = require('glob');
 const path = require('path');
 
 const _path = path.join(__dirname, 'generate');
-const _filename = path.join(_path, 'Holidays.ics');
+const _filename = path.join(_path, 'holidays.ics');
 const _sequence = 0;
 
 async function GetHoliday() {
